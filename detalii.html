@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalii Unitate</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="btn-back">Înapoi</a>
+        <h2>Detalii Unitate</h2>
+        {% if detalii is not none and not detalii.empty %}
+            {% for index, row in detalii.iterrows() %}
+                <div class="detail"><strong>ID:</strong> {{ row['ID'] }}</div>
+                <div class="detail"><strong>Tip unitate:</strong> {{ row['Tip unitate'] }}</div>
+                <div class="detail"><strong>Nume unitate:</strong> {{ row['Nume unitate'] }}</div>
+                <div class="detail"><strong>Tip categorie:</strong> {{ row['Tip categorie'] }}</div>
+                <div class="detail"><strong>Număr spații:</strong> {{ row['Număr spații'] }}</div>
+                <div class="detail"><strong>Număr locuri:</strong> {{ row['Număr locuri'] }}</div>
+                <div class="detail"><strong>Alte detalii adresă:</strong> {{ row['Alte detalii adresă'] }}</div>
+                <div class="detail"><strong>Tip localitate:</strong> {{ row['Tip localitate'] }}</div>
+                <div class="detail"><strong>Localitate componentă:</strong> {{ row['Localitate componentă'] }}</div>
+                <div class="detail"><strong>Localitate:</strong> {{ row['Localitate'] }}</div>
+                <div class="detail"><strong>Județ:</strong> {{ row['Județ'] }}</div>
+                <div class="detail"><strong>Email:</strong> {{ row['Email'] }}</div>
+                <div class="detail"><strong>Web:</strong> {{ row['Web'] }}</div>
+                <div class="detail"><strong>Tip Operator Economic:</strong> {{ row['Tip Operator Economic'] }}</div>
+                <div class="detail"><strong>Operator Economic:</strong> {{ row['Operator Economic'] }}</div>
+                <div class="detail"><strong>Număr Înregistrare:</strong> {{ row['Număr Înregistrare'] }}</div>
+                <div class="detail"><strong>Cod Unic Înregistrare:</strong> {{ row['Cod Unic Înregistrare'] }}</div>
+                <div class="detail"><strong>Număr autorizație:</strong> {{ row['Număr autorizație'] }}</div>
+                <div class="detail"><strong>Dată emitere autorizație:</strong> {{ row['Dată emitere autorizație'] }}</div>
+            {% endfor %}
+        {% else %}
+            <p>Detalii nu sunt disponibile pentru unitatea selectată.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

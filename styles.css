@@ -1,0 +1,216 @@
+body {
+    background: #ffffff;
+    font-family: 'Google Sans', sans-serif;
+    color: #202124;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh;
+}
+.container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    height: auto; /* Se ajustează în funcție de conținut */
+    overflow: hidden; /* Ascunde eventualele depășiri */
+}
+.left-panel, .right-panel {
+    padding: 20px;
+}
+.left-panel {
+    background: #ffffff;
+    border-bottom: 1px solid #dadce0;
+    margin-bottom: 20px; /* Adaugă un spațiu sub panel */
+    z-index: 1; /* Asigură-te că este deasupra secțiunii de detalii */
+}
+.right-panel {
+    background: #f6f8fc;
+    padding: 20px;
+    z-index: 0; /* Asigură-te că este sub panelul din stânga */
+}
+.form-control {
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 1px solid #dadce0;
+    margin-bottom: 20px;
+}
+.btn-primary {
+    background: #d93025;
+    border-color: #d93025;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+.btn-primary:hover {
+    background: #b1271b;
+    border-color: #b1271b;
+}
+.autocomplete-list {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    color: #202124;
+    border: 1px solid #dadce0;
+}
+.autocomplete-item {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #f1f3f4;
+}
+.autocomplete-item:hover {
+    background: #f1f3f4;
+}
+#results-container {
+    max-height: 400px; /* Setează o înălțime maximă pentru containerul de rezultate */
+    overflow-y: auto;  /* Permite scroll-ul vertical */
+    margin-top: 20px;  /* Adaugă un spațiu între rezultate și bara de căutare */
+}
+table {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #dadce0;
+    table-layout: fixed; /* Adaugă această proprietate pentru a preveni depășirea celulelor */
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+th {
+    background-color: #f6f8fc;
+    color: #202124;
+}
+tr:hover td {
+    background: #f1f3f4;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+.detail {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+.info-text {
+    background: #f6f8fc;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #202124;
+    text-align: center;
+    border: 1px solid #dadce0;
+}
+h2 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* Media Queries for Responsive Design */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        height: 85vh;
+    }
+    .left-panel {
+        width: 35%; /* Reduce lățimea panoului din stânga */
+        border-right: 1px solid #dadce0;
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+    .right-panel {
+        width: 65%; /* Crește lățimea panoului din dreapta */
+        display: block; /* Afișează panoul de detalii pe desktop */
+        overflow-y: auto;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding-top: 120px; /* Compensează pentru bara fixă */
+    }
+    .left-panel {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        z-index: 1000;
+        border-bottom: 1px solid #dadce0;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .right-panel {
+        margin-top: 20px; /* Separa puțin conținutul de bara fixă */
+        display: block; /* Afișează panoul de detalii când un rezultat este selectat pe mobil */
+        z-index: 0; /* Asigură-te că este sub panelul din stânga */
+    }
+    h2 {
+        font-size: 20px;
+    }
+    .detail {
+        font-size: 12px;
+    }
+    .form-control {
+        font-size: 14px;
+    }
+    .btn-primary {
+        font-size: 14px;
+    }
+    th, td {
+        font-size: 12px;
+    }
+}
+
+.desktop-only {
+    display: none; /* Ascunde implicit */
+}
+
+/* Afișează textul doar pe ecrane mai mari (desktop) */
+@media (min-width: 768px) {
+    .desktop-only {
+        display: block; /* Afișează pe desktop */
+    }
+}
+.btn-back {
+    margin-bottom: 20px;
+    background: #d93025;  /* Fundal roșu */
+    border-color: #d93025; /* Bordură roșie */
+    color: #ffffff;        /* Text alb */
+    padding: 6px 15px;     /* Dimensiuni și padding pentru a fi mai compact */
+    border-radius: 8px;    /* Colțuri rotunjite */
+    text-decoration: none; /* Fără subliniere */
+    display: inline-block;
+    font-size: 14px;       /* Dimensiune text mai mică */
+    transition: all 0.3s ease; /* Efect de tranziție */
+    width: auto;           /* Lățime automată, se ajustează în funcție de text */
+    min-width: 120px;      /* Setează o lățime minimă pentru buton */
+    text-align: center;    /* Aliniere text în centru */
+}
+
+.btn-back:hover {
+    background: #b1271b;   /* Fundal roșu mai închis la hover */
+    border-color: #b1271b; /* Bordură roșie mai închisă la hover */
+    text-decoration: none; /* Fără subliniere la hover */
+}
