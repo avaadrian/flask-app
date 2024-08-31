@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Căutare Unitate de Cazare</title>
+    <!-- Integrare Bootstrap și Font -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Panel Stanga -->
+        <div class="left-panel">
+            <h2>Căutare Unitate de Cazare</h2>
+            <div class="info-text">
+                Acesta este un serviciu gratuit oferit de oameni pentru oameni. Vă rugăm să folosiți informațiile cu responsabilitate.
+            </div>
+            <form method="post" autocomplete="off" id="search-form">
+                <div class="form-group position-relative">
+                    <input type="text" class="form-control" id="nume_unitate" name="nume_unitate" placeholder="Introduceți numele unității" required>
+                    <div id="autocomplete-list" class="autocomplete-list"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Caută</button>
+            </form>
+
+            <div id="results-container">
+                {% if rezultate is not none and not rezultate.empty %}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nume unitate</th>
+                                <th>Tip unitate</th>
+                                <th>Tip categorie</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for index, row in rezultate.iterrows() %}
+                            <tr class="result-row" data-id="{{ row['ID'] }}">
+                                <td>{{ row['ID'] }}</td>
+                                <td>{{ row['Nume unitate'] }}</td>
+                                <td>{{ row['Tip unitate'] }}</td>
+                                <td>{{ row['Tip categorie'] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% elif rezultate is not none %}
+                    <p>Nu au fost găsite rezultate pentru unitatea specificată.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Panel Dreapta -->
+        <div class="right-panel desktop-only">
+            <h2>Detalii Unitate</h2>
+            <div id="detalii-container">
+                {% if detalii is not none and not detalii.empty %}
+                    {% for index, row in detalii.iterrows() %}
+                        <div class="detail"><strong>ID:</strong> {{ row['ID'] }}</div>
+                        <div class="detail"><strong>Tip unitate:</strong> {{ row['Tip unitate'] }}</div>
+                        <div class="detail"><strong>Nume unitate:</strong> {{ row['Nume unitate'] }}</div>
+                        <div class="detail"><strong>Tip categorie:</strong> {{ row['Tip categorie'] }}</div>
+                        <div class="detail"><strong>Număr spații:</strong> {{ row['Număr spații'] }}</div>
+                        <div class="detail"><strong>Număr locuri:</strong> {{ row['Număr locuri'] }}</div>
+                        <div class="detail"><strong>Alte detalii adresă:</strong> {{ row['Alte detalii adresă'] }}</div>
+                        <div class="detail"><strong>Tip localitate:</strong> {{ row['Tip localitate'] }}</div>
+                        <div class="detail"><strong>Localitate componentă:</strong> {{ row['Localitate componentă'] }}</div>
+                        <div class="detail"><strong>Localitate:</strong> {{ row['Localitate'] }}</div>
+                        <div class="detail"><strong>Județ:</strong> {{ row['Județ'] }}</div>
+                        <div class="detail"><strong>Email:</strong> {{ row['Email'] }}</div>
+                        <div class="detail"><strong>Web:</strong> {{ row['Web'] }}</div>
+                        <div class="detail"><strong>Tip Operator Economic:</strong> {{ row['Tip Operator Economic'] }}</div>
+                        <div class="detail"><strong>Operator Economic:</strong> {{ row['Operator Economic'] }}</div>
+                        <div class="detail"><strong>Număr Înregistrare:</strong> {{ row['Număr Înregistrare'] }}</div>
+                        <div class="detail"><strong>Cod Unic Înregistrare:</strong> {{ row['Cod Unic Înregistrare'] }}</div>
+                        <div class="detail"><strong>Număr autorizație:</strong> {{ row['Număr autorizație'] }}</div>
+                        <div class="detail"><strong>Dată emitere autorizație:</strong> {{ row['Dată emitere autorizație'] }}</div>
+                    {% endfor %}
+                {% else %}
+                    <p class="desktop-only">Selectați o unitate din stânga pentru a vedea detaliile complete.</p>
+                {% endif %}
+            </div>
+        </div>        
+    </div>
+
+    <!-- Scripturi pentru Autocomplete și Detalii -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
