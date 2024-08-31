@@ -5,7 +5,9 @@ $(document).ready(function(){
         $('#nume_unitate').val(sessionStorage.getItem('searchQuery')); // Restaurăm valoarea căutării
     }
 
+    // Golește sessionStorage la începutul unei noi căutări
     $('#nume_unitate').on('input', function() {
+        sessionStorage.clear(); // Curăță sessionStorage pentru a începe o nouă căutare
         var query = $(this).val();
         if (query.length >= 2) {
             $.ajax({
