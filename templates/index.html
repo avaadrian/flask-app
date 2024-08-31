@@ -29,19 +29,17 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Nume unitate</th>
                                 <th>Tip unitate</th>
-                                <th>Tip categorie</th>
+                                <th>Județ</th> <!-- Aici se schimbă "Tip categorie" cu "Județ" -->
                             </tr>
                         </thead>
                         <tbody>
                             {% for index, row in rezultate.iterrows() %}
                             <tr class="result-row" data-id="{{ row['ID'] }}">
-                                <td>{{ row['ID'] }}</td>
                                 <td>{{ row['Nume unitate'] }}</td>
                                 <td>{{ row['Tip unitate'] }}</td>
-                                <td>{{ row['Tip categorie'] }}</td>
+                                <td>{{ row['Județ'] }}</td> <!-- Aici se schimbă "Tip categorie" cu "Județ" -->
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -58,17 +56,15 @@
             <div id="detalii-container">
                 {% if detalii is not none and not detalii.empty %}
                     {% for index, row in detalii.iterrows() %}
-                        <div class="detail"><strong>ID:</strong> {{ row['ID'] }}</div>
                         <div class="detail"><strong>Tip unitate:</strong> {{ row['Tip unitate'] }}</div>
                         <div class="detail"><strong>Nume unitate:</strong> {{ row['Nume unitate'] }}</div>
-                        <div class="detail"><strong>Tip categorie:</strong> {{ row['Tip categorie'] }}</div>
+                        <div class="detail"><strong>Județ:</strong> {{ row['Județ'] }}</div> <!-- Aici este deja prezent Județul -->
                         <div class="detail"><strong>Număr spații:</strong> {{ row['Număr spații'] }}</div>
                         <div class="detail"><strong>Număr locuri:</strong> {{ row['Număr locuri'] }}</div>
                         <div class="detail"><strong>Alte detalii adresă:</strong> {{ row['Alte detalii adresă'] }}</div>
                         <div class="detail"><strong>Tip localitate:</strong> {{ row['Tip localitate'] }}</div>
                         <div class="detail"><strong>Localitate componentă:</strong> {{ row['Localitate componentă'] }}</div>
                         <div class="detail"><strong>Localitate:</strong> {{ row['Localitate'] }}</div>
-                        <div class="detail"><strong>Județ:</strong> {{ row['Județ'] }}</div>
                         <div class="detail"><strong>Email:</strong> {{ row['Email'] }}</div>
                         <div class="detail"><strong>Web:</strong> {{ row['Web'] }}</div>
                         <div class="detail"><strong>Tip Operator Economic:</strong> {{ row['Tip Operator Economic'] }}</div>

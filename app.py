@@ -6,12 +6,14 @@ app = Flask(__name__)
 # Citirea fișierului Excel
 df = pd.read_excel('Agentie_de_turism.xlsx', engine='openpyxl')
 
+
 # Funcție pentru a căuta unități după nume
 def cauta_unitate(nume):
     if not isinstance(nume, str) or not nume:
         return pd.DataFrame()  # Returnează un DataFrame gol dacă numele nu este valid
     rezultate = df[df['Nume unitate'].str.contains(nume, case=False, na=False)]
-    return rezultate[['ID', 'Nume unitate', 'Tip unitate', 'Tip categorie']]
+    return rezultate[['ID', 'Nume unitate', 'Tip unitate', 'Județ']]  # Aici se schimbă coloana Tip categorie cu Județ
+
 
 # Funcție pentru a obține toate informațiile unei unități de cazare după ID
 def detalii_unitate(id):
