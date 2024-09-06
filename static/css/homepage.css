@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+  
+    min-height: 100vh;
+    padding: 10px;
+}
+
+.container {
+    width: 90vw; /* Dimensiune relativă la viewport */
+    max-width: 1200px;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.header .logo {
+    width: 15vw; /* Dimensiune flexibilă */
+    max-width: 200px;
+    margin-bottom: 20px; /* Micșorăm marginile */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-section {
+    text-align: center;
+    margin-bottom: 15px; /* Reducem spațiul între text și următoarele elemente */
+}
+
+.text-section h1 {
+    font-size: 2rem; /* Folosim rem pentru dimensiune flexibilă */
+    color: #333;
+}
+
+/* Stil pentru textul evidențiat */
+.text-highlight {
+    color: #FFA500; /* Portocaliu frumos */
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem; /* Text mai mare */
+    
+}
+
+.image-section {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.circle-container {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.line {
+    width: 2px;
+    height: 200px;
+    background-color: #00aa99;
+    margin: 0 20px;
+}
+
+.sau {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: #333;
+}
+
+.footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.cta-button {
+    background-color: #ffaa00;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem; /* Dimensiune flexibilă */
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #ff8800;
+}
+
+/* Stil pentru textul informativ */
+.info-text {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    font-size: 1rem; /* Dimensiune flexibilă */
+}
+
+.info-text strong {
+    color: #ff8800; /* Portocaliu pentru accentuarea textului */
+}
+
+.info-text p {
+    margin-bottom: 10px;
+}
+
+.info-text a {
+    color: #ff8800; /* Portocaliu */
+    text-decoration: none; /* Scoate linia sub text */
+    font-weight: bold;
+}
+
+.info-text a:hover {
+    text-decoration: underline; /* Sub linie când este hover */
+}
+
+/* Stiluri pentru SVG */
+.svg-section {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.svg-image {
+    width: 16vw; /* Dimensiune flexibilă */
+    max-width: 400px; /* Dimensiune maximă */
+    height: auto; /* Păstrează proporțiile */
+}
+
+/* Media query pentru ecrane mai mici de 768px */
+@media (max-width: 768px) {
+    .container {
+        width: 95vw; /* Creștem lățimea pe ecrane mici */
+        padding: 15px;
+    }
+
+    .text-section h1 {
+        font-size: 1.5rem; /* Micșorăm dimensiunea fontului */
+    }
+
+    .text-highlight {
+        font-size: 2rem;
+    }
+
+    .svg-image {
+        width: 60vw; /* SVG mai mare pe ecrane mici */
+        max-width: none;
+    }
+
+    .cta-button {
+        font-size: 1rem; /* Micșorăm butonul pe ecrane mici */
+        padding: 10px 20px;
+    }
+
+    .info-text {
+        font-size: 0.9rem; /* Micșorăm textul informativ */
+    }
+
+    .header .logo {
+        width: 25vw; /* Dimensiune flexibilă pentru logo */
+    }
+}

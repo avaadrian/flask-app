@@ -44,7 +44,7 @@ $(document).ready(function(){
             // Trimitere cerere pentru detalii unitate pe desktop
             $.ajax({
                 type: 'POST',
-                url: '/',
+                url: '/index',
                 data: {id: id},
                 success: function(response) {
                     var html = $(response).find('.right-panel').html();

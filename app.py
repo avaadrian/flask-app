@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 import pandas as pd
 
 app = Flask(__name__)
@@ -20,7 +20,21 @@ def detalii_unitate(id):
     rezultat = df[df['ID'] == int(id)]
     return rezultat
 
-@app.route('/', methods=['GET', 'POST'])
+
+# Noua rută pentru pagina de start (homepage)
+@app.route('/homepage')
+def homepage():
+    return render_template('homepage.html')
+
+
+# Ruta principală - redirecționare inițială către homepage
+@app.route('/', methods=['GET'])
+def landing_page():
+    return redirect(url_for('homepage'))
+
+
+# Ruta pentru aplicația existentă (index.html)
+@app.route('/index', methods=['GET', 'POST'])
 def index():
     rezultate = None
     detalii = None
@@ -32,6 +46,8 @@ def index():
             detalii = detalii_unitate(id_cautat)
     return render_template('index.html', rezultate=rezultate, detalii=detalii)
 
+
+# Ruta pentru autocomplete
 @app.route('/autocomplete', methods=['GET'])
 def autocomplete():
     search = request.args.get('q')
@@ -42,7 +58,8 @@ def autocomplete():
     suggestions = unitati['Nume unitate'].tolist()
     return jsonify(suggestions)
 
-# Noua rută pentru afișarea detaliilor într-o pagină separată
+
+# Rută pentru afișarea detaliilor într-o pagină separată
 @app.route('/detalii', methods=['GET'])
 def detalii():
     id_cautat = request.args.get('id')
@@ -50,6 +67,7 @@ def detalii():
         detalii = detalii_unitate(id_cautat)
         return render_template('detalii.html', detalii=detalii)
     return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Glimero - Cazare cu tichete de vacanță</title>
+        <link href="{{ url_for('static', filename='css/homepage.css') }}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="static/images/logo.png" alt="Glimer Logo" class="logo">
+        </div>
+        
+        <div class="content">
+            <div class="text-section">
+                <h1>Cele mai bune opțiuni de cazare<br>
+                    <span class="text-highlight">cu tichete de vacanță.</span>
+                </h1>
+                <h1>Verifică dacă cazarea ta primește tichete de vacanță</h1>
+            </div>
+            
+            
+            <!-- <div class="image-section">
+                <div class="circle-container">
+                    <div class="circle">
+                        <img src="munte.jpg" alt="Munte">
+                        <p>munte?</p>
+                    </div>
+                    <div class="line"></div>
+                    <div class="circle">
+                        <img src="mare.jpg" alt="Mare">
+                        <p>mare?</p>
+                    </div>
+                </div>
+                <p class="sau"></p>
+            </div>
+        </div> -->
+        <div class="svg-section">
+            <img src="static/images/Group5.svg" alt="Ilustrație SVG" class="svg-image">
+        </div>
+
+        <div class="footer">
+            <button class="cta-button" onclick="window.location.href='/index'">Verifică Cazarea</button>
+        </div>
+        
+        
+      
+        
+        <!-- Text informativ sub buton -->
+        <div class="info-text">
+            <p><strong>INFO:</strong> Cazările sunt verificate folosind baza de date publică de pe site-ul Ministerului Turismului, de la secțiunea:</p>
+            <p><strong><a href="https://turism.gov.ro/web/autorizare-turism/" target="_blank">Structuri de primire turistice cu funcțiuni de cazare</a></strong></p>
+ 
+        </div>
+        
+        
+    </div>
+</body>
+</html>
