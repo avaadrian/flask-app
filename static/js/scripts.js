@@ -66,14 +66,12 @@ $(document).ready(function(){
     $(window).on('beforeunload', function() {
         sessionStorage.clear();
     });
-    console.log(window.jspdf);
 
-     // Gestionare eveniment "Înapoi" pe mobil
-     window.onpageshow = function(event) {
+    // Gestionare eveniment "Înapoi" pe mobil și reîncărcare completă pe Safari
+    window.onpageshow = function(event) {
         if (event.persisted || window.performance && window.performance.navigation.type === 2) {
-            sessionStorage.clear();  // Șterge sessionStorage
-            $('#search-form')[0].reset();  // Resetăm formularul de căutare
-            $('#results-container').empty();  // Ștergem rezultatele anterioare
+            // Forțează reîncărcarea completă a paginii pentru a preveni cache-ul în Safari
+            window.location.reload();  // Modificarea adăugată pentru Safari
         }
     };
     
