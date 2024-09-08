@@ -1,10 +1,16 @@
 $(document).ready(function(){
+    // Resetează formularul atunci când se încarcă pagina, dacă există formularul
+    if ($('#search-form').length) {
+        $('#search-form')[0].reset();
+    }
+
     // Verificăm dacă există rezultate salvate
     if (sessionStorage.getItem('searchResults')) {
         $('#results-container').html(sessionStorage.getItem('searchResults'));
         $('#nume_unitate').val(sessionStorage.getItem('searchQuery')); // Restaurăm valoarea căutării
     }
 
+    // Autocomplete pentru căutare
     $('#nume_unitate').on('input', function() {
         var query = $(this).val();
         if (query.length >= 2) {
@@ -23,12 +29,14 @@ $(document).ready(function(){
         }
     });
 
+    // Selectare din lista de autocomplete
     $(document).on('click', '.autocomplete-item', function() {
         var selectedText = $(this).text();
         $('#nume_unitate').val(selectedText);
         $('#autocomplete-list').empty();
     });
 
+    // Selectare rezultat din lista
     $(document).on('click', '.result-row', function() {
         var id = $(this).data('id');
 
@@ -58,4 +66,10 @@ $(document).ready(function(){
     $(window).on('beforeunload', function() {
         sessionStorage.clear();
     });
+    console.log(window.jspdf);
+
+    // Event pentru descărcarea PDF-ului
+
+    
+    
 });

@@ -73,6 +73,8 @@
                         <div class="detail"><strong>Cod Unic Înregistrare:</strong> {{ row['Cod Unic Înregistrare'] }}</div>
                         <div class="detail"><strong>Număr autorizație:</strong> {{ row['Număr autorizație'] }}</div>
                         <div class="detail"><strong>Dată emitere autorizație:</strong> {{ row['Dată emitere autorizație'] }}</div>
+                        
+
                     {% endfor %}
                 {% else %}
                     <p class="desktop-only">Selectați o unitate din stânga pentru a vedea detaliile complete.</p>
@@ -84,5 +86,8 @@
     <!-- Scripturi pentru Autocomplete și Detalii -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+ 
+
+    
 </body>
 </html>
