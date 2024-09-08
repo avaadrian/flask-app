@@ -70,9 +70,10 @@ $(document).ready(function(){
     // Gestionare eveniment "Înapoi" pe mobil și reîncărcare completă pe Safari
     window.onpageshow = function(event) {
         if (event.persisted || window.performance && window.performance.navigation.type === 2) {
-            // Forțează reîncărcarea completă a paginii pentru a preveni cache-ul în Safari
-            window.location.reload();  // Modificarea adăugată pentru Safari
+            // Adăugăm un query string unic pentru a forța reîncărcarea completă a paginii
+            window.location.href = window.location.href.split('?')[0] + '?nocache=' + new Date().getTime();
         }
     };
+    
     
 });
