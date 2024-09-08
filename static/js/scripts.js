@@ -68,8 +68,13 @@ $(document).ready(function(){
     });
     console.log(window.jspdf);
 
-    // Event pentru descărcarea PDF-ului
-
-    
+     // Gestionare eveniment "Înapoi" pe mobil
+     window.onpageshow = function(event) {
+        if (event.persisted || window.performance && window.performance.navigation.type === 2) {
+            sessionStorage.clear();  // Șterge sessionStorage
+            $('#search-form')[0].reset();  // Resetăm formularul de căutare
+            $('#results-container').empty();  // Ștergem rezultatele anterioare
+        }
+    };
     
 });
