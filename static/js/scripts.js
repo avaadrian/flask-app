@@ -1,17 +1,10 @@
 $(document).ready(function(){
-    // Resetează formularul atunci când se încarcă pagina, dacă există formularul
-    if ($('#search-form').length) {
-        $('#search-form')[0].reset();
-    }
-
-    // Verificăm dacă există rezultate salvate
-    if (sessionStorage.getItem('searchResults')) {
-        $('#results-container').html(sessionStorage.getItem('searchResults'));
-        $('#nume_unitate').val(sessionStorage.getItem('searchQuery')); // Restaurăm valoarea căutării
-    }
-
-    // Autocomplete pentru căutare
+    // Resetează formularul și rezultatele la începutul unei noi căutări
     $('#nume_unitate').on('input', function() {
+        // Resetăm formularul și rezultatele când începe o nouă căutare
+        $('#search-form')[0].reset();  // Resetăm formularul
+        $('#results-container').empty();  // Ștergem rezultatele anterioare
+
         var query = $(this).val();
         if (query.length >= 2) {
             $.ajax({
@@ -66,14 +59,4 @@ $(document).ready(function(){
     $(window).on('beforeunload', function() {
         sessionStorage.clear();
     });
-
-    // Gestionare eveniment "Înapoi" pe mobil și reîncărcare completă pe Safari
-    window.onpageshow = function(event) {
-        if (event.persisted || window.performance && window.performance.navigation.type === 2) {
-            // Adăugăm un query string unic pentru a forța reîncărcarea completă a paginii
-            window.location.href = window.location.href.split('?')[0] + '?nocache=' + new Date().getTime();
-        }
-    };
-    
-    
 });
